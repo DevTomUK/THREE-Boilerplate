@@ -1,13 +1,13 @@
 import { Canvas } from '@react-three/fiber'
 import './App.css'
-import Scene from './components/scene/Scene'
+import World from './components/scene/World'
 
 function App() {
 
   return (
     <>
       <Canvas>
-        <Scene />
+        <World />
       </Canvas>
     </>
   )
