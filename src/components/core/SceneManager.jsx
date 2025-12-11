@@ -7,8 +7,8 @@ export default function SceneManager() {
   return (
     <>
       <Camera />
-      <CameraController />
       <Lighting />
+      <CameraController />
     </>
   );
 }
