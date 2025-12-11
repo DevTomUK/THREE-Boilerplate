@@ -1,15 +1,15 @@
-import { createContext, useState } from "react";
+import { createContext, useRef, useState } from "react";
 
-export const CameraContext = createContext()
+export const CameraContext = createContext();
 
 export function CameraProvider({ children }) {
+  const cameraRef = useRef(null);
 
-    const [position, setPosition] = useState([10, 10, 10])
-    
-    return (
-    <CameraContext.Provider value={{position, setPosition}}>
-        {children}
+  const [targetPosition, setTargetPosition] = useState([10, 10, 10]);
+
+  return (
+    <CameraContext.Provider value={{ cameraRef, targetPosition, setTargetPosition }}>
+      {children}
     </CameraContext.Provider>
-    )
-
+  );
 }

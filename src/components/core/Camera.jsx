@@ -1,13 +1,15 @@
-import { PerspectiveCamera } from '@react-three/drei'
-import React, { useContext } from 'react'
-import { CameraContext } from '../../context/cameraContext'
+import { PerspectiveCamera } from "@react-three/drei";
+import { useContext } from "react";
+import { CameraContext } from "../../context/cameraContext";
 
 export default function Camera() {
+  const { cameraRef, targetPosition } = useContext(CameraContext);
 
-  const { position } = useContext(CameraContext)
   return (
-    <>
-        <PerspectiveCamera makeDefault position={position} />
-    </>
-  )
+    <PerspectiveCamera
+      makeDefault
+      ref={cameraRef}
+      position={targetPosition}
+    />
+  );
 }
