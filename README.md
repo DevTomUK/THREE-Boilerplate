@@ -3,6 +3,7 @@
 A simple boilerplate for quickly setting up your own THREE (R3F) scene.
 
 ![File Structure](/public/demo/layout.png)
+![3D Scene](/public/demo/scene.png)
 
 ## Components
 
