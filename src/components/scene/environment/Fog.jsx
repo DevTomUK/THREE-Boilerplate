@@ -1,9 +1,16 @@
-export default function Fog({ mode = 'linear', color = 'grey', near = 5, far = 20, density = 0.05, enabled = true }) {
+export default function Fog({
+  enabled = true,
+  mode = 'linear',   
+  color = '#87ceeb',
+  near = 1,           
+  far = 100,          
+  density = 0.05,     
+}) {
   if (!enabled) return null;
 
-  if (mode === 'exp') {
-    return <fogExp2 attach="fog" color={color} density={density} />;
-  }
-
-  return <fog attach="fog" color={color} near={near} far={far} />;
+  return mode === 'exp' ? (
+    <fogExp2 attach="fog" color={color} density={density} />
+  ) : (
+    <fog attach="fog" color={color} near={near} far={far} />
+  );
 }

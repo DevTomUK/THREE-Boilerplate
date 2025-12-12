@@ -31,6 +31,8 @@
 
 #### Environment
 - For environmental features, sky, fog, environment maps, etc.
+- `Fog.jsx` - Creates fog in scene with input options. use "exp" for exponential, or any other for linear.
+- `SkyHDRI` - Creates a HDRI background from an image, or a Drei Sky as a backup. Both can be disabled if needed.
 
 #### Models
 - For 3D models within the scene (GLTF, JSX, etc.)
