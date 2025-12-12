@@ -6,6 +6,7 @@ Features smooth camera animations, lighting, fog, and a working example to get y
 
 ![File Structure](/public/demo/layout.png)
 ![3D Scene](/public/demo/scene.png)
+![With post processing effects](/public/demo/scene2.png)
 
 ---
 
