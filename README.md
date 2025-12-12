@@ -7,14 +7,14 @@ Features smooth camera animations, lighting, fog, and a working example to get y
 ![File Structure](/public/demo/layout.png)
 ![3D Scene](/public/demo/scene.png)
 
+---
+
 ## Contains:
 
 ### Components
 
 #### `World`
 - Contains the full 3D scene, wrapping the Scene Manager, and Scene Content together.
-
----
 
 #### Core
 
@@ -30,8 +30,6 @@ Features smooth camera animations, lighting, fog, and a working example to get y
 
 #### `SceneManager`
 - Wraps all of the scene's core components
-
----
 
 #### Scene
 
@@ -51,19 +49,13 @@ Features smooth camera animations, lighting, fog, and a working example to get y
 - `Cube.jsx` has an onClick to demo camera movements by calling setTargetPosition.
 - `Floor.jsx` - just a floor. Rotated to -Math.PI / 2 to flatten it.
 
----
-
 #### UI
 - 2D UI components overlaying the scene (HUD, buttons, panels)
-
----
 
 ### Context
 
 - For global React Context. Contains:
 - `CameraContext` - Provides context for the camera positioning.
-
----
 
 ### Hooks
 - Custom hooks for interaction, camera, or scene state
@@ -96,7 +88,7 @@ yarn install
 npm run dev
 ```
 
-
+---
 
 ## Dependencies
 - three
