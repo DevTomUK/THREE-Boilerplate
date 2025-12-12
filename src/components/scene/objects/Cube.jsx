@@ -12,13 +12,13 @@ export default function Cube() {
   function handleClickCube() {
     switch (position) {
       case 0:
-        setTargetPosition([5, 3, 5]);
+        setTargetPosition([1, 2, 1]);
         break;
       case 1:
         setTargetPosition([2, 5, 8]);
         break;
       case 2:
-        setTargetPosition([6, 5, 6]);
+        setTargetPosition([-2, 0.2, 18]);
         break;
     }
     setPosition((curr) => (curr + 1) % 3);
