@@ -1,10 +1,11 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { CameraContext } from "../../../context/cameraContext";
 
 export default function Cube() {
   const { setTargetPosition } = useContext(CameraContext);
 
   const [position, setPosition] = useState(0);
+  const [hovered, setHovered] = useState(false)
 
   const size = 1;
 
@@ -24,9 +25,9 @@ export default function Cube() {
   }
 
   return (
-    <mesh onClick={handleClickCube} position={[0, size / 2, 0]} receiveShadow castShadow>
+    <mesh onPointerOver={()=>setHovered(true)} onPointerOut={()=>setHovered(false)} onClick={handleClickCube} position={[0, size / 2, 0]} receiveShadow castShadow>
       <boxGeometry args={[size, size, size]} />
-      <meshStandardMaterial />
+      <meshStandardMaterial color={hovered ? 'hotpink' : 'lightgrey'} />
     </mesh>
   );
 }

@@ -17,7 +17,7 @@
 
 #### `Lighting`
 - Uses `ambientLight` at intensity 0.6
-- Uses `directionalLight` at intensity 0.4 with offset position to highlight faces
+- Uses `directionalLight` at intensity 0.4 with offset position to highlight faces. Allows shadows.
 
 #### `SceneManager`
 - Wraps all of the scene's core components
@@ -38,6 +38,7 @@
 #### Objects
 - For reusable scene objects like floor, cubes, props, meshes:
 - `Cube.jsx` has an onClick to demo camera movements by calling setTargetPosition.
+- `Floor.jsx` - just a floor. Rotated to -Math.PI / 2 to flatten it.
 
 ---
 
