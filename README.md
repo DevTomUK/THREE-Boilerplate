@@ -13,6 +13,8 @@
 - `ambientLight` intensity 0.6
 - `directionalLight` intensity 0.4 with offset position to highlight faces
 
+#### Scene Manager
+Contains all of the scene's core components
 ---
 
 ### Scene
@@ -29,10 +31,20 @@
 #### World
 - Assembles the full 3D scene using environment, models, and objects
 
+#### SceneContent
+Contains all of the scene's content - models, objects, etc
+
 ---
 
 ### UI
 - 2D UI components overlaying the scene (HUD, buttons, panels)
+
+---
+
+## Context
+
+For global React Context
+- `CameraController` - Animates the camera movements (position and lookAt) from current to target using LERP.
 
 ---
 
