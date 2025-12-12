@@ -1,4 +1,3 @@
-import useAutoFocus from "../../hooks/autoFocus";
 import Camera from "../core/Camera";
 import CameraController from "../core/CameraController";
 import Lighting from "../core/Lighting";
@@ -7,8 +6,6 @@ import PostProcessing from "../scene/environment/PostProcessing";
 import SkyHDRI from "../scene/environment/SkyHDRI";
 
 export default function SceneManager() {
-
-   const autoFocusDistance = useAutoFocus(100);
 
   return (
     <>
