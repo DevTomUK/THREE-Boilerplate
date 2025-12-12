@@ -36,7 +36,8 @@
 - For 3D models within the scene (GLTF, JSX, etc.)
 
 #### Objects
-- For reusable scene objects like floor, cubes, props, meshes
+- For reusable scene objects like floor, cubes, props, meshes:
+- `Cube.jsx` has an onClick to demo camera movements by calling setTargetPosition.
 
 ---
 
