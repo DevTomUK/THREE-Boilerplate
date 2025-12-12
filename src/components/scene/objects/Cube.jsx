@@ -3,7 +3,7 @@ import { CameraContext } from '../../../context/cameraContext'
 
 export default function Cube() {
 
-  const { cameraRef, setTargetPosition } = useContext(CameraContext)
+  const { setTargetPosition } = useContext(CameraContext)
 
   const [position, setPosition] = useState(0)
 
