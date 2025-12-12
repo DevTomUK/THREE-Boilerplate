@@ -1,5 +1,9 @@
 # THREE.js Boilerplate
 
+A simple boilerplate for quickly setting up your own THREE (R3F) scene.
+
+![File Structure](/public/demo/layout.png)
+
 ## Components
 
 ### `World`
