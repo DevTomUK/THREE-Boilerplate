@@ -24,7 +24,7 @@ export default function Cube() {
   }
 
   return (
-    <mesh onClick={handleClickCube} position={[0, size / 2, 0]}>
+    <mesh onClick={handleClickCube} position={[0, size / 2, 0]} receiveShadow castShadow>
       <boxGeometry args={[size, size, size]} />
       <meshStandardMaterial />
     </mesh>

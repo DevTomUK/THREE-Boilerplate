@@ -7,7 +7,7 @@ function App() {
 
   return (
     <CameraProvider>
-      <Canvas>
+      <Canvas shadows>
         <World />
       </Canvas>
     </CameraProvider>
