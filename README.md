@@ -7,7 +7,7 @@
 - `PerspectiveCamera` as default camera from Drei
 
 #### CameraController
-- Currently blank. For changing current (lookAt and position) to target using lerp for smooth movements.
+-  Animates the camera movements (position and lookAt) for current to target on changes - uses LERP for smooth movements.
 
 #### Lighting
 - `ambientLight` intensity 0.6
@@ -44,7 +44,7 @@ Contains all of the scene's content - models, objects, etc
 ## Context
 
 For global React Context
-- `CameraController` - Animates the camera movements (position and lookAt) from current to target using LERP.
+- `CameraContext` - Provides context for the camera positioning.
 
 ---
 
