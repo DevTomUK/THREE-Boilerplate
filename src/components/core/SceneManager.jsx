@@ -1,10 +1,15 @@
+import useAutoFocus from "../../hooks/autoFocus";
 import Camera from "../core/Camera";
 import CameraController from "../core/CameraController";
 import Lighting from "../core/Lighting";
 import Fog from "../scene/environment/Fog";
+import PostProcessing from "../scene/environment/PostProcessing";
 import SkyHDRI from "../scene/environment/SkyHDRI";
 
 export default function SceneManager() {
+
+   const autoFocusDistance = useAutoFocus(100);
+
   return (
     <>
       <Camera />
@@ -18,10 +23,11 @@ export default function SceneManager() {
             background: true,
           },
           sky: {
-            enabled: false
-          }
+            enabled: false,
+          },
         }}
       />
+      <PostProcessing options={{ enabled: true }} />
 
       <CameraController />
     </>
