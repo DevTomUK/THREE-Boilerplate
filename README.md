@@ -2,22 +2,32 @@
 
 ## Components
 
-### Core
-#### Camera
-- `PerspectiveCamera` as default camera from Drei
+### `World`
+- Contains the full 3D scene, wrapping the Scene Manager, and Scene Content together.
 
-#### CameraController
+---
+
+### Core
+
+#### `Camera`
+- Creates a `PerspectiveCamera` as the default camera from Drei
+
+#### `CameraController`
 -  Animates the camera movements (position and lookAt) for current to target on changes - uses LERP for smooth movements.
 
-#### Lighting
-- `ambientLight` intensity 0.6
-- `directionalLight` intensity 0.4 with offset position to highlight faces
+#### `Lighting`
+- Uses `ambientLight` at intensity 0.6
+- Uses `directionalLight` at intensity 0.4 with offset position to highlight faces
 
-#### Scene Manager
-Contains all of the scene's core components
+#### `SceneManager`
+- Wraps all of the scene's core components
+
 ---
 
 ### Scene
+
+#### `SceneContent`
+- Contains all of the scene's content - models, objects, etc
 
 #### Environment
 - For environmental features, sky, fog, environment maps, etc.
@@ -28,12 +38,6 @@ Contains all of the scene's core components
 #### Objects
 - For reusable scene objects like floor, cubes, props, meshes
 
-#### World
-- Assembles the full 3D scene using environment, models, and objects
-
-#### SceneContent
-Contains all of the scene's content - models, objects, etc
-
 ---
 
 ### UI
@@ -43,7 +47,7 @@ Contains all of the scene's content - models, objects, etc
 
 ## Context
 
-For global React Context
+- For global React Context. Contains:
 - `CameraContext` - Provides context for the camera positioning.
 
 ---

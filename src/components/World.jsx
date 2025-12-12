@@ -1,5 +1,3 @@
-import React from 'react'
-
 import SceneContent from './SceneContent'
 import SceneManager from '../core/SceneManager'
 
