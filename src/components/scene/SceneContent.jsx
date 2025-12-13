@@ -1,3 +1,4 @@
+import { Boat } from './objects/Boat'
 import Cube from './objects/Cube'
 import Floor from './objects/Floor'
 import Ocean from './objects/Ocean'
@@ -11,6 +12,7 @@ export default function SceneContent() {
       {/* <Floor /> */}
       <Ocean />
       <Model />
+      <Boat />
     </>
   )
 }

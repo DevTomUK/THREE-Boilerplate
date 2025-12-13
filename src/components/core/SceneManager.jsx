@@ -6,6 +6,7 @@ import Fog from "../scene/environment/Fog";
 import PostProcessing from "../scene/environment/PostProcessing";
 import SkyHDRI from "../scene/environment/SkyHDRI";
 import { useFrame } from "@react-three/fiber";
+import { Pixelation } from "@react-three/postprocessing";
 
 export default function SceneManager() {
 
@@ -13,13 +14,13 @@ export default function SceneManager() {
   return (
     <>
       <Camera />
-      <Lighting />
-      <Fog enabled={false} mode="exp" />
+      <Lighting enabled={true} />
+      <Fog enabled={true} mode="exp" />
       <SkyHDRI
         options={{
           hdri: {
             enabled: true,
-            path: "/hdris/citrus_orchard_road_puresky_2k.hdr",
+            path: "/hdris/qwantani_dusk_2_puresky_2k.hdr",
             background: true,
           },
           sky: {
@@ -28,7 +29,6 @@ export default function SceneManager() {
         }}
       />
       <PostProcessing options={{ enabled: true }} />
-
       <CameraController />
     </>
   );

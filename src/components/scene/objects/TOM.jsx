@@ -8,6 +8,7 @@ export function Model(props) {
   const { moveTo } = useContext(CameraContext);
 
   const [hovered, setHovered] = useState(false);
+  const [clicked, setClicked] = useState(false)
   const modelRef = useRef();
 
   const { scale } = useSpring({
@@ -15,18 +16,13 @@ export function Model(props) {
     config: { mass: 1, tension: 170, friction: 20 },
   });
 
-  const cameraPositions = ["start", "lowShot", "farView"];
-  const [positionIndex, setPositionIndex] = useState(0);
-
   function handleClickTOM() {
-    const targetName = cameraPositions[positionIndex];
-    moveTo(targetName);
-    setPositionIndex((curr) => (curr + 1) % cameraPositions.length);
+    if (!clicked) {
+      moveTo("lowShot");
+      setClicked(true)
+    }
   }
 
-  useEffect(() => {
-    handleClickTOM();
-  }, []);
 
   const { nodes, materials } = useGLTF("/TOM-transformed.glb");
 
@@ -45,7 +41,7 @@ export function Model(props) {
       ref={modelRef}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
-      onClick={handleClickTOM}
+      onClick={()=>handleClickTOM()}
       {...props}
       dispose={null}
       scale={scale}

@@ -1,10 +1,10 @@
 export default function Fog({
   enabled = true,
   mode = 'linear',   
-  color = '#87ceeb',
+  color = '#dddddd',
   near = 1,           
-  far = 100,          
-  density = 0.05,     
+  far = 1000,          
+  density = 0.0005,     
 }) {
   if (!enabled) return null;
 
