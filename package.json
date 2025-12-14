@@ -1,8 +1,14 @@
 {
-  "name": "threeboilerplate",
-  "private": true,
-  "version": "0.0.0",
+  "name": "t3scene",
+  "version": "0.1.0",
+  "description": "A boilerplate/react-three-fiber scene wrapper with camera presets, lighting, and environment.",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/types.d.ts",
   "type": "module",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -30,5 +36,8 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
     "vite": "^7.2.4"
-  }
+  },
+    "keywords": ["three.js", "r3f", "react-three-fiber", "scene", "boilerplate"],
+    "author": "Tom Heeley",
+    "license": "MIT"
 }
