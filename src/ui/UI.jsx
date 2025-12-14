@@ -8,14 +8,9 @@ export default function UI() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (cameraRef.current?.userData?.start) {
         setVisible(true);
-        clearInterval(interval);
-      }
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [cameraRef]);
+      },
+  [cameraRef]);
 
   return (
     <div
@@ -32,9 +27,8 @@ export default function UI() {
         alignItems: "center",
         color: "#fff",
         pointerEvents: "none",
-        backgroundColor: `rgba(0,0,0,${visible ? 1 : 0})`,
         opacity: visible ? 1 : 0,
-        transition: "opacity 3s ease, background-color 120s ease",
+        transition: "opacity 3s ease",
       }}
     >
       <h1>THREE Boilerplate</h1>
