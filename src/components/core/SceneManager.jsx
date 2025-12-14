@@ -14,20 +14,12 @@ export default function SceneManager({ preset = "default" }) {
 
   return (
     <>
-      <Camera {...config.camera} />
-      <CameraController />
-
-      <Lighting {...config.lighting} />
-
-      {config.fog?.enabled && <Fog {...config.fog} />}
-
-      {config.environment?.sky && (
-        <SkyHDRI options={config.environment.sky} />
-      )}
-
-      {config.postProcessing?.enabled && (
-        <PostProcessing options={config.postProcessing} />
-      )}
+      <Camera type={config.camera.type} options={config.camera.options} />
+      <CameraController lerpFactor={config.lerpFactor} />
+      <Lighting options={config.lighting.options} />
+      <Fog options={config.fog?.options} />
+      <SkyHDRI options={config.environment?.sky?.options} />
+      <PostProcessing options={config.postProcessing?.options} />
     </>
   );
 }

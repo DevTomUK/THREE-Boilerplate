@@ -3,10 +3,10 @@
 import SceneContent from './scene/SceneContent'
 import SceneManager from './core/SceneManager'
 
-export default function World() {
+export default function World({ preset = "default" }) {
   return (
     <>
-      <SceneManager />
+      <SceneManager preset={preset} />
       <SceneContent />
     </>
   )

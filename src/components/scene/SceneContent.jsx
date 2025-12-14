@@ -9,10 +9,14 @@ export default function SceneContent() {
 
   return (
     <>
-      <Cube />
-      {/* <Floor /> */}
-      <Ocean />
-      {/* <TOM /> */}
+      {/* ----- THIS IS THE DEMO SCENE, REMOVE THESE COMPONENTS AND ADD YOUR OWN SCENE HERE ------- */}
+      <>
+        <Cube />
+        {/* <Floor /> */}
+        <Ocean />
+        {/* <TOM /> */}
+      </>
+      {/* ------------------------------------------------------------------------------------------ */}
     </>
   )
 }
