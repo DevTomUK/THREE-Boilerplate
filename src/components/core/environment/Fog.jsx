@@ -1,20 +1,25 @@
-// Provides scene fog - linear and exponential fog modes can be passed in with mode
+// Fog.jsx
+// Provides scene fog with linear or exponential modes
+// Fully configurable via options
 
-export default function Fog({
-  enabled = true,
-  mode = "linear",
-  color = "#dddddd",
-  near = 1,
-  far = 1000,
-  density = 0.0005,
-}) {
-  if (!enabled) return null;
+export default function Fog({ options = {} }) {
+  const defaults = {
+    enabled: true,
+    mode: "linear", 
+    color: "#dddddd",
+    near: 1,
+    far: 1000, 
+    density: 0.0005,
+  };
 
-  // Exponential fog (FogExp2)
-  if (mode === "exp") {
-    return <fogExp2 attach="fog" color={color} density={density} />;
+  // Merge user options with defaults
+  const config = { ...defaults, ...options };
+
+  if (!config.enabled) return null;
+
+  if (config.mode === "exp") {
+    return <fogExp2 attach="fog" color={config.color} density={config.density} />;
   }
 
-  // Linear fog (Fog)
-  return <fog attach="fog" color={color} near={near} far={far} />;
+  return <fog attach="fog" color={config.color} near={config.near} far={config.far} />;
 }

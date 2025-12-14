@@ -3,9 +3,10 @@
 // Mounts only when enabled to avoid unnecessary performance cost
 // Fully prop-driven with deep merge using lodash.merge
 
-import { useRef, useFrame } from "react";
+import { useRef } from "react";
 import { EffectComposer, Bloom, Noise, Vignette, Autofocus, Pixelation } from "@react-three/postprocessing";
 import merge from "lodash.merge";
+import { useFrame } from "@react-three/fiber";
 
 export default function PostProcessing({ options = {} }) {
   const defaultOptions = {
