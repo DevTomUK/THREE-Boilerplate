@@ -1,10 +1,11 @@
 // Applies post-processing effects to the scene
 // Enabled from ./scenePresets.js
 // Mounts only when enabled to avoid unnecessary performance cost
-// Updated to expose options
+// Fully prop-driven with deep merge using lodash.merge
 
 import { useRef, useFrame } from "react";
 import { EffectComposer, Bloom, Noise, Vignette, Autofocus, Pixelation } from "@react-three/postprocessing";
+import merge from "lodash.merge";
 
 export default function PostProcessing({ options = {} }) {
   const defaultOptions = {
@@ -16,22 +17,15 @@ export default function PostProcessing({ options = {} }) {
     pixelation: { enabled: false, granularity: 5 },
   };
 
-  const config = {
-    ...defaultOptions,
-    ...options,
-    bloom: { ...defaultOptions.bloom, ...(options?.bloom || {}) },
-    noise: { ...defaultOptions.noise, ...(options?.noise || {}) },
-    vignette: { ...defaultOptions.vignette, ...(options?.vignette || {}) },
-    autofocus: { ...defaultOptions.autofocus, ...(options?.autofocus || {}) },
-    pixelation: { ...defaultOptions.pixelation, ...(options?.pixelation || {}) },
-  };
+  // Deep merge user options with defaults
+  const config = merge({}, defaultOptions, options);
 
   if (!config.enabled) return null;
 
   const pixelRef = useRef();
   const granuleRef = useRef(config.pixelation.granularity);
 
-  useFrame((state, delta) => {
+  useFrame(() => {
     if (pixelRef.current && config.pixelation.enabled) {
       pixelRef.current.granularity = granuleRef.current;
     }
@@ -47,8 +41,12 @@ export default function PostProcessing({ options = {} }) {
         />
       )}
       {config.noise.enabled && <Noise opacity={config.noise.opacity} />}
-      {config.vignette.enabled && <Vignette offset={config.vignette.offset} darkness={config.vignette.darkness} />}
-      {config.autofocus.enabled && <Autofocus smoothTime={config.autofocus.smoothTime} bokehScale={config.autofocus.bokehScale} />}
+      {config.vignette.enabled && (
+        <Vignette offset={config.vignette.offset} darkness={config.vignette.darkness} />
+      )}
+      {config.autofocus.enabled && (
+        <Autofocus smoothTime={config.autofocus.smoothTime} bokehScale={config.autofocus.bokehScale} />
+      )}
       {config.pixelation.enabled && <Pixelation ref={pixelRef} granularity={granuleRef.current} />}
     </EffectComposer>
   );
