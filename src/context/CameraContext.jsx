@@ -6,34 +6,43 @@ import { createContext, useRef, useState } from "react";
 
 export const CameraContext = createContext();
 
-export function CameraProvider({ children }) {
+export function CameraProvider({ children, initialPositions = {} }) {
   const cameraRef = useRef();
 
-  // Named positions stored here for global access
-  const namedPositions = {
+  // Default positions
+  const defaultPositions = {
     start: { position: [20, 120, 50], lookAt: [0, 0, 0] },
     mediumShot: { position: [30, 40, 10], lookAt: [0, 0, 0] },
     lowShot: { position: [-20, 2, 180], lookAt: [0, 0, 0] },
-  }
+  };
 
-  // Current position/target xyz for CameraController - uses refs to avoid state updating with useFrames for tracking
-  const targetPosition = useRef([20, 120, 50]);
-  const targetLookAt = useRef([0, 0, 0]);
+  // Merge user-provided positions with defaults to ensure start exists
+  const namedPositions = { ...defaultPositions, ...initialPositions };
 
-  // Moves camera to a named position
+  // Determine initial camera position key
+  const initialKey = Object.keys(namedPositions)[0]; // first key guaranteed to exist
+  const initialTarget = namedPositions[initialKey];
+
+  // Current target refs for CameraController
+  const targetPosition = useRef(initialTarget.position);
+  const targetLookAt = useRef(initialTarget.lookAt);
+
+  // Track current camera position name
+  const [positionName, setPositionName] = useState(initialKey);
+
+  // Move to a named position
   function moveTo(name) {
     const target = namedPositions[name];
     if (!target) return;
-
+    setPositionName(name);
     targetPosition.current = target.position;
     targetLookAt.current = target.lookAt;
   }
 
-  // Allows tracking of an object, updating ref each frame
+  // Track a moving object
   function trackTarget(position, target) {
     targetPosition.current = position;
     targetLookAt.current = target;
-  
   }
 
   return (
@@ -43,6 +52,8 @@ export function CameraProvider({ children }) {
         targetPosition,
         targetLookAt,
         moveTo,
+        trackTarget,
+        positionName,
       }}
     >
       {children}

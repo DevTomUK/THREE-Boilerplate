@@ -8,7 +8,7 @@ export default function Cube() {
   const [hovered, setHovered] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const cameraNames = ["start", "mediumShot", "lowShot"];
+  const cameraNames = ["start", "mediumShot", "lowShot"]; // Add your own custom cameraPositions here from ../../cameraPositions.js - these are the default/fallback in the context, but you can overwrite them in the js.
   const size = 10;
 
   function handleClickCube() {
