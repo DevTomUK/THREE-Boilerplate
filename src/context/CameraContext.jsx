@@ -1,40 +1,47 @@
-import { createContext, useEffect, useRef, useState } from "react";
+// Stores the context for the camera position and lookAt (target) and exports it for use in camera controller
+// Stores named positions so that the camera can be moved using exported moveTo(name) function anywhere in app
+// Sets position and target which is used by the camera controller to move it
+
+import { createContext, useRef, useState } from "react";
 
 export const CameraContext = createContext();
 
 export function CameraProvider({ children }) {
-  const cameraRef = useRef(null);
+  const cameraRef = useRef();
 
+  // Named positions stored here for global access
   const namedPositions = {
-    start: { position: [10, 200, 20], lookAt: [0, 0, 0] },
-    lowShot: { position: [0, 20, 100], lookAt: [0, 20, 10] },
-    farView: { position: [-20, 500, 180], lookAt: [2, 0, 120] },
-  };
-
-  const [targetPosition, setTargetPosition] = useState(namedPositions.start.position);
-  const [targetLookAt, setTargetLookAt] = useState(namedPositions.start.lookAt);
-
-  function moveTo(name, look) {
-    cameraRef.current.userData.start = true
-    if (namedPositions[name]) {
-      setTargetPosition(namedPositions[name].position);
-      setTargetLookAt(namedPositions[name].lookAt);
-    } else {
-      setTargetPosition(name)
-      setTargetLookAt(look)
-    }
+    start: { position: [20, 120, 50], lookAt: [0, 0, 0] },
+    mediumShot: { position: [30, 40, 10], lookAt: [0, 0, 0] },
+    lowShot: { position: [-20, 2, 180], lookAt: [0, 0, 0] },
   }
 
+  // Current position/target xyz for CameraController - uses refs to avoid state updating with useFrames for tracking
+  const targetPosition = useRef([20, 120, 50]);
+  const targetLookAt = useRef([0, 0, 0]);
+
+  // Moves camera to a named position
+  function moveTo(name) {
+    const target = namedPositions[name];
+    if (!target) return;
+
+    targetPosition.current = target.position;
+    targetLookAt.current = target.lookAt;
+  }
+
+  // Allows tracking of an object, updating ref each frame
+  function trackTarget(position, target) {
+    targetPosition.current = position;
+    targetLookAt.current = target;
   
+  }
 
   return (
     <CameraContext.Provider
       value={{
         cameraRef,
         targetPosition,
-        setTargetPosition,
         targetLookAt,
-        setTargetLookAt,
         moveTo,
       }}
     >

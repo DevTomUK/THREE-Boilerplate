@@ -1,5 +1,5 @@
-// Uses the scene's camera reference to update position and target
-// useFrame is used to smoothly transition with LERP
+// Uses the scene's camera reference to update position and target with useFrame to smoothly transition with LERP
+// Gets positions and targets from CameraContext
 
 import { useFrame } from "@react-three/fiber";
 import { useContext, useRef } from "react";
@@ -10,20 +10,16 @@ export default function CameraController() {
   const { cameraRef, targetPosition, targetLookAt } =
     useContext(CameraContext);
 
-  const currentLookAt = useRef(new THREE.Vector3());
-  const targetLookAtVec = useRef(new THREE.Vector3());
-  const targetPos = useRef(new THREE.Vector3());
+useFrame(() => {
+  if (!cameraRef.current) return;
 
-  useFrame(() => {
-    if (!cameraRef.current) return;
+  const pos = targetPosition.current;
+  const look = targetLookAt.current;
 
-    targetPos.current.set(...targetPosition);
-    cameraRef.current.position.lerp(targetPos.current, 0.05);
+  cameraRef.current.position.lerp(new THREE.Vector3(...pos), 0.05);
+  cameraRef.current.lookAt(new THREE.Vector3(...look));
+});
 
-    targetLookAtVec.current.set(...targetLookAt);
-    currentLookAt.current.lerp(targetLookAtVec.current, 0.05);
-    cameraRef.current.lookAt(currentLookAt.current);
-  });
 
   return null;
 }

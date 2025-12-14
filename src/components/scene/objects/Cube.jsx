@@ -2,26 +2,17 @@ import { useContext, useState } from "react";
 import { CameraContext } from "../../../context/cameraContext";
 
 export default function Cube() {
-  const { setTargetPosition } = useContext(CameraContext);
-
-  const [position, setPosition] = useState(0);
+  const { moveTo } = useContext(CameraContext);
   const [hovered, setHovered] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  const cameraNames = ["highShot", "mediumShot", "lowShot"];
   const size = 10;
 
   function handleClickCube() {
-    switch (position) {
-      case 0:
-        setTargetPosition([80, 120, 50]);
-        break;
-      case 1:
-        setTargetPosition([30, 40, 10]);
-        break;
-      case 2:
-        setTargetPosition([-20, 2, 180]);
-        break;
-    }
-    setPosition((curr) => (curr + 1) % 3);
+    const name = cameraNames[currentIndex];
+    moveTo(name);
+    setCurrentIndex((prev) => (prev + 1) % cameraNames.length);
   }
 
   return (

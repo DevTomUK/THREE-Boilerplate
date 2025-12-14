@@ -8,7 +8,7 @@ export function Model(props) {
   const { moveTo } = useContext(CameraContext);
 
   const [hovered, setHovered] = useState(false);
-  const [clicked, setClicked] = useState(false)
+  const [clicked, setClicked] = useState(false);
   const modelRef = useRef();
 
   const { scale } = useSpring({
@@ -19,10 +19,9 @@ export function Model(props) {
   function handleClickTOM() {
     if (!clicked) {
       moveTo("lowShot");
-      setClicked(true)
+      setClicked(true);
     }
   }
-
 
   const { nodes, materials } = useGLTF("/TOM-transformed.glb");
 
@@ -41,7 +40,7 @@ export function Model(props) {
       ref={modelRef}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
-      onClick={()=>handleClickTOM()}
+      onClick={handleClickTOM}
       {...props}
       dispose={null}
       scale={scale}
