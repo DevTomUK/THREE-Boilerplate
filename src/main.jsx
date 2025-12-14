@@ -5,6 +5,6 @@ import Game from './components/Game.jsx';
 
 createRoot(document.getElementById('root')).render(
   <T3Scene>
-    {/* <Game /> */}
+    <Game />
   </T3Scene>
 );

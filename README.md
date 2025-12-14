@@ -119,3 +119,44 @@ This boilerplate is currently under active development. The core components and 
 - The demo assets and example scene are included for illustration and testing.  
 - Users are encouraged to follow updates and contribute feedback.
 
+
+## NPM usage example:
+
+```jsx
+import { T3Scene, SCENE_PRESETS } from 't3-scene';
+
+const myPresets = {
+  cinematic: {
+    ...SCENE_PRESETS.default,
+    postProcessing: { enabled: true },
+  },
+  noEffects: {
+    ...SCENE_PRESETS.default,
+    postProcessing: { enabled: false },
+    }
+};
+
+const myCameraPositions = {
+  ...CAMERA_POSITIONS,
+  heroShot: {
+    position: [0, 10, 25],
+    lookAt: [0, 5, 0],
+  },
+  basicShot: {
+    position: [10, 10, 10],
+    lookAt: [0, 0, 0] 
+  }
+};
+
+export default function App() {
+  return (
+    <T3Scene
+      preset="cinematic"
+      scenePresets={myPresets}
+      cameraPositions={myCameraPositions}
+    >
+      <MySceneObjects />
+    </T3Scene>
+  );
+}
+```

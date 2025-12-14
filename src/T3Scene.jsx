@@ -2,17 +2,30 @@ import { Canvas } from '@react-three/fiber';
 import { CameraProvider } from './context/cameraContext';
 import UI from './ui/UI';
 import World from './World';
-import { CAMERA_POSITIONS } from './core/cameraPositions';
+
+import { CAMERA_POSITIONS } from './cameraPositions';
+import { SCENE_PRESETS } from './scenePresets';
 import DemoScene from './scene/DemoScene';
 
-export default function T3Scene({ preset = 'default', children }) {
-  // If no children passed in, use DemoScene as fallback
+export default function T3Scene({
+  preset = 'default',
+  children,
+  cameraPositions,
+  scenePresets,
+}) {
+  // Merge user overrides with defaults
+  const finalCameraPositions = cameraPositions ?? CAMERA_POSITIONS;
+  const finalScenePresets = scenePresets ?? SCENE_PRESETS;
+
   const content = children || <DemoScene />;
 
   return (
-    <CameraProvider initialPositions={CAMERA_POSITIONS}>
+    <CameraProvider initialPositions={finalCameraPositions}>
       <Canvas shadows>
-        <World preset={preset}>
+        <World
+          preset={preset}
+          scenePresets={finalScenePresets}
+        >
           {content}
         </World>
       </Canvas>

@@ -7,7 +7,7 @@ import Fog from "./environment/Fog";
 import PostProcessing from "./environment/PostProcessing";
 import SkyHDRI from "./environment/SkyHDRI";
 
-import { SCENE_PRESETS } from "./scenePresets";
+import { SCENE_PRESETS } from "../scenePresets";
 
 export default function SceneManager({ preset = "default" }) {
   const config = SCENE_PRESETS[preset];
