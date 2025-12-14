@@ -1,4 +1,3 @@
-// Fog.jsx
 // Provides scene fog with linear or exponential modes
 // Fully configurable via options
 

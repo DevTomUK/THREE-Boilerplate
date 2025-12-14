@@ -1,4 +1,3 @@
-// SkyHDRI.jsx
 // Provides a scene background: HDRI or procedural sky
 // Fully configurable via options passed in props, with deep merge
 
