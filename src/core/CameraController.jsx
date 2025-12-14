@@ -9,14 +9,24 @@ import * as THREE from "three";
 export default function CameraController({ lerpFactor = 0.05 }) {
   const { cameraRef, targetPosition, targetLookAt } = useContext(CameraContext);
 
+  const smoothLookAt = useRef(new THREE.Vector3());
+
   useFrame(() => {
     if (!cameraRef.current) return;
 
-    const pos = targetPosition.current;
-    const look = targetLookAt.current;
+    // Smooth position
+    cameraRef.current.position.lerp(
+      new THREE.Vector3(...targetPosition.current),
+      lerpFactor
+    );
 
-    cameraRef.current.position.lerp(new THREE.Vector3(...pos), lerpFactor);
-    cameraRef.current.lookAt(new THREE.Vector3(...look));
+    // Smooth lookAt target
+    smoothLookAt.current.lerp(
+      new THREE.Vector3(...targetLookAt.current),
+      lerpFactor
+    );
+
+    cameraRef.current.lookAt(smoothLookAt.current);
   });
 
   return null;

@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { CameraContext } from '../context/cameraContext'
 
 export default function Game() {
+
+  const { moveTo } = useContext(CameraContext)
+
   return (
-    <mesh>
+    <mesh onClick={()=>moveTo("home")}>
         <boxGeometry args={[10, 10, 10]} />
         <meshStandardMaterial />
     </mesh>

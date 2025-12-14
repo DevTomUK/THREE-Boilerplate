@@ -11,7 +11,7 @@ export function CameraProvider({ children, initialPositions = {} }) {
 
   // Default positions
   const defaultPositions = {
-    start: { position: [20, 120, 50], lookAt: [0, 0, 0] },
+    start: { position: [20, 120, 50], lookAt: [0, 0, 10] },
     mediumShot: { position: [30, 40, 10], lookAt: [0, 0, 0] },
     lowShot: { position: [-20, 2, 180], lookAt: [0, 0, 0] },
   };
