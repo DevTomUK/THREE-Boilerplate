@@ -1,36 +1,37 @@
-// Gives control over what the scene's background looks like
-// Driven by scene presets (./scenePresets.js), passed in as options
-// Supports HDRI environments or a procedural sky fallback
+// SkyHDRI.jsx
+// Provides a scene background: HDRI or procedural sky
+// Fully configurable via options passed in props
 
 import { Sky, Environment } from "@react-three/drei";
 
-export default function SkyHDRI({ options = {} }) {
-  const {
-    hdri = {
+export default function SkyHDRI({ options }) {
+  // Default options
+  const defaults = {
+    hdri: {
       enabled: false,
       path: null,
       background: false,
     },
-    sky = {
+    sky: {
       enabled: true,
       sunPosition: [1, 1, 0],
       turbidity: 10,
       inclination: 0.49,
       azimuth: 0.25,
     },
-  } = options;
+  };
 
-  // HDRI takes priority when enabled
+  // Merge user options with defaults
+  const config = { ...defaults, ...options };
+  const hdri = { ...defaults.hdri, ...(options?.hdri || {}) };
+  const sky = { ...defaults.sky, ...(options?.sky || {}) };
+
+  // Render HDRI if enabled and path is provided
   if (hdri.enabled && hdri.path) {
-    return (
-      <Environment
-        files={hdri.path}
-        background={hdri.background}
-      />
-    );
+    return <Environment files={hdri.path} background={hdri.background} />;
   }
 
-  // Procedural sky fallback
+  // Render procedural sky if enabled
   if (sky.enabled) {
     return (
       <Sky

@@ -109,3 +109,13 @@ npm run dev
 - @types/three
 - @react-three/fiber
 - @react-three/drei
+
+
+## Notes
+
+This boilerplate is currently under active development. The core components and architecture are being structured to eventually become a reusable npm package.  
+
+- Features and APIs may evolve as improvements are made.  
+- The demo assets and example scene are included for illustration and testing.  
+- Users are encouraged to follow updates and contribute feedback.
+
