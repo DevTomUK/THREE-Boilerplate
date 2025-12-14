@@ -1,7 +1,7 @@
 // Basic cube mesh to demonstrate hover effects, and movement of camera using moveTo function
 
 import { useContext, useState } from "react";
-import { CameraContext } from "../../../context/cameraContext";
+import { CameraContext } from "../../context/cameraContext";
 
 export default function Cube() {
   const { moveTo } = useContext(CameraContext);

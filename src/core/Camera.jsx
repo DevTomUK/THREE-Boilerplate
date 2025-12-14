@@ -4,7 +4,7 @@
 
 import { useContext } from "react";
 import { PerspectiveCamera, OrthographicCamera, CubeCamera } from "@react-three/drei";
-import { CameraContext } from "../../context/cameraContext";
+import { CameraContext } from "../context/cameraContext";
 import merge from "lodash.merge";
 
 export default function Camera({ type = "perspective", options = {} }) {

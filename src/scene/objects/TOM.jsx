@@ -2,7 +2,7 @@
 
 import React, { useContext, useState, useRef, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
-import { CameraContext } from "../../../context/cameraContext";
+import { CameraContext } from "../../context/cameraContext";
 import { useFrame } from "@react-three/fiber";
 import { a, useSpring } from "@react-spring/three";
 

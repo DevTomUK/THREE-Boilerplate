@@ -3,7 +3,7 @@
 
 import { useFrame } from "@react-three/fiber";
 import { useContext, useRef } from "react";
-import { CameraContext } from "../../context/cameraContext";
+import { CameraContext } from "../context/cameraContext";
 import * as THREE from "three";
 
 export default function CameraController({ lerpFactor = 0.05 }) {
