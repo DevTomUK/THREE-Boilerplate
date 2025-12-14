@@ -5,18 +5,18 @@ import Floor from './objects/Floor'
 import Ocean from './objects/Ocean'
 import { TOM } from './objects/TOM'
 
-export default function SceneContent() {
+export default function DemoScene() {
 
   return (
     <>
-      {/* ----- THIS IS THE DEMO SCENE, REMOVE THESE COMPONENTS AND ADD YOUR OWN SCENE HERE ------- */}
+      {/* ------- THIS IS THE DEMO SCENE, THIS RENDERS ON A CONDITION WHERE THE USER HAS INPUT NO 3D OBJECTS -------- */}
       <>
         <Cube />
         {/* <Floor /> */}
         <Ocean />
         {/* <TOM /> */}
       </>
-      {/* ------------------------------------------------------------------------------------------ */}
+      {/* ---------------------------------------------------------------------------------------------------------- */}
     </>
   )
 }

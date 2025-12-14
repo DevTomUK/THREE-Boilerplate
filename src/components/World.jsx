@@ -3,13 +3,15 @@
 // UPDATE: Scene content may need to be lifted higher or have children components passed here and only render one.
 
 import SceneManager from './core/SceneManager';
-import SceneContent from './scene/SceneContent';
+import DemoScene from './scene/DemoScene';
 
 export default function World({ preset = 'default', children }) {
+
+
   return (
     <>
       <SceneManager preset={preset} />
-      {children || <SceneContent />} {/* here - fallback to demo scene */}
+      {children}
     </>
   );
 }
