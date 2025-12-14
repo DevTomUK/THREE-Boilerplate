@@ -1,6 +1,6 @@
 {
   "name": "t3scene",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A boilerplate/react-three-fiber scene wrapper with camera presets, lighting, and environment.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",

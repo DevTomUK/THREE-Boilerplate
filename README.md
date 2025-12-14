@@ -123,7 +123,7 @@ This boilerplate is currently under active development. The core components and 
 ## NPM usage example:
 
 ```jsx
-import { T3Scene, SCENE_PRESETS } from 't3-scene';
+import { T3Scene, SCENE_PRESETS } from 't3scene';
 
 const myPresets = {
   cinematic: {
