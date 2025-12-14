@@ -20,7 +20,13 @@ Features smooth camera animations, lighting, fog, and a working example to get y
 #### Core
 
 ##### `Camera.jsx`
-- Creates a `PerspectiveCamera` as the default camera from Drei
+- Provides a camera using **@react-three/drei**
+- Supports switching camera types via a `type` prop:
+  - `"perspective"` (default)
+  - `"orthographic"`
+  - `"cube"`
+- Registers the selected camera as the scene’s default
+- Camera reference is exposed through `CameraContext` for external control
 
 ##### `CameraController.jsx`
 -  Animates the camera movements (position and lookAt) for current to target on changes - uses LERP for smooth movements.
