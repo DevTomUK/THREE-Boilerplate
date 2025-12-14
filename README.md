@@ -4,9 +4,9 @@ A simple boilerplate for quickly setting up a THREE.js (R3F) scene.
 Features smooth camera animations, lighting, fog, and a working example to get you started.
 
 
-![File Structure](/public/demo/layout.png)
-![3D Scene](/public/demo/scene.png)
-![With post processing effects](/public/demo/scene2.png)
+![File Structure]("https://github.com/DevTomUK/THREE-Boilerplate/blob/main/public/demo/layout.png?raw=true")
+![3D Scene]("https://github.com/DevTomUK/THREE-Boilerplate/blob/main/public/demo/scene.png?raw=true")
+![With post processing effects]("https://github.com/DevTomUK/THREE-Boilerplate/blob/main/public/demo/scene2.png?raw=true")
 
 ---
 
