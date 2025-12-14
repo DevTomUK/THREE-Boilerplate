@@ -1,3 +1,5 @@
+// Realistic water effect using waternormals.jpeg - animated using useFrame to add delta to material uniforms
+
 import * as THREE from "three";
 import React, { useRef, useMemo } from "react";
 import { useThree, useLoader, useFrame, extend } from "@react-three/fiber";

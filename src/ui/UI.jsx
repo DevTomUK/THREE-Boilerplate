@@ -1,3 +1,5 @@
+// 2D overlay for Menu/HUD, etc
+
 import React, { useContext, useState, useEffect } from "react";
 import { CameraContext } from "../context/cameraContext";
 

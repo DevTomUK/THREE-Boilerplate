@@ -1,3 +1,5 @@
+// Boat Model - jsx created using npx gltfjsx
+
 import { useContext, useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'

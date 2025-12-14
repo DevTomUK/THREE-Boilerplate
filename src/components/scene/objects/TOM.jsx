@@ -1,3 +1,5 @@
+// TOM Model - jsx created using npx gltfjsx
+
 import React, { useContext, useState, useRef, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { CameraContext } from "../../../context/cameraContext";
