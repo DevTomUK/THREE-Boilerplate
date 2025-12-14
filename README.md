@@ -17,7 +17,18 @@ Features smooth camera animations, lighting, fog, and a working example to get y
 #### `World.jsx`
 - Contains the full 3D scene, wrapping the Scene Manager, and Scene Content together.
 
+---
+
 #### Core
+
+##### `SceneManager.jsx`
+- Wraps all of the scene's core components
+
+##### Environment
+- For environmental features, sky, fog, environment maps, etc.
+- `Fog.jsx` - Creates fog in scene with input options. use "exp" for Exponential fog, or any other value for Linear.
+- `SkyHDRI.jsx` - Sets the scene background. Uses an HDRI image if provided; otherwise falls back to a Drei procedural Sky. Both can be disabled via options.
+- `PostProcessing` - Sets up effects for the scene - Bloom, vignette, autofocus, etc.
 
 ##### `Camera.jsx`
 - Provides a camera using **@react-three/drei**
@@ -29,27 +40,19 @@ Features smooth camera animations, lighting, fog, and a working example to get y
 - Camera reference is exposed through `CameraContext` for external control
 
 ##### `CameraController.jsx`
--  Animates the camera movements (position and lookAt) for current to target on changes - uses LERP for smooth movements.
+- Smoothly animates the camera between current position and target using **LERP**.
+- Reads `targetPosition` and `targetLookAt` from `CameraContext`.
 
 ##### `Lighting.jsx`
 - Uses `ambientLight` at intensity 0.6
 - Uses `directionalLight` at intensity 0.4 with offset position to highlight faces. Allows shadows.
 
-##### `SceneManager.jsx`
-- Wraps all of the scene's core components
+---
 
 #### Scene
 
 ##### `SceneContent.jsx`
 - Contains all of the scene's content - models, objects, etc
-
-##### Environment
-- For environmental features, sky, fog, environment maps, etc.
-- `Fog.jsx` - Creates fog in scene with input options. use "exp" for Exponential fog, or any other value for Linear.
-- `SkyHDRI.jsx` - Sets the scene background. Uses an HDRI image if provided; otherwise falls back to a Drei procedural Sky. Both can be disabled via options.
-
-##### Models
-- For 3D models within the scene (GLTF, JSX, etc.)
 
 ##### Objects
 - For reusable scene objects like floor, cubes, props, meshes:
@@ -63,8 +66,10 @@ Features smooth camera animations, lighting, fog, and a working example to get y
 
 ### Context
 
-- For global React Context. Contains:
-- `CameraContext.jsx` - Provides context for the camera positioning.
+##### `CameraContext.jsx`
+- Stores named camera positions (start, lowShot, mediumShot).
+- Exposes `moveTo(name)` for static positions and `trackTarget(pos, look)` for following dynamic objects.
+
 
 ### Hooks
 - Custom hooks for interaction, camera, or scene state

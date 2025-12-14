@@ -1,10 +1,9 @@
 // Wrapper for all of the physical/visible objects and meshes within the scene
 
-import { Boat } from './objects/Boat'
 import Cube from './objects/Cube'
 import Floor from './objects/Floor'
 import Ocean from './objects/Ocean'
-import { Model } from './objects/TOM'
+import { TOM } from './objects/TOM'
 
 export default function SceneContent() {
 
@@ -13,8 +12,7 @@ export default function SceneContent() {
       <Cube />
       {/* <Floor /> */}
       <Ocean />
-      {/* <Model /> */}
-      <Boat />
+      {/* <TOM /> */}
     </>
   )
 }

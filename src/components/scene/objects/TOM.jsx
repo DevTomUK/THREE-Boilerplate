@@ -6,11 +6,10 @@ import { CameraContext } from "../../../context/cameraContext";
 import { useFrame } from "@react-three/fiber";
 import { a, useSpring } from "@react-spring/three";
 
-export function Model(props) {
+export function TOM(props) {
   const { moveTo } = useContext(CameraContext);
 
   const [hovered, setHovered] = useState(false);
-  const [clicked, setClicked] = useState(false);
   const modelRef = useRef();
 
   const { scale } = useSpring({
@@ -19,10 +18,7 @@ export function Model(props) {
   });
 
   function handleClickTOM() {
-    if (!clicked) {
       moveTo("lowShot");
-      setClicked(true);
-    }
   }
 
   const { nodes, materials } = useGLTF("/TOM-transformed.glb");
