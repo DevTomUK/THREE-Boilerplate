@@ -1,35 +1,33 @@
-import { useRef } from "react";
+// Gives control over what the scene looks like - scene presets object is in ./scenePresets.js
+
 import Camera from "../core/Camera";
 import CameraController from "../core/CameraController";
 import Lighting from "../core/Lighting";
-import Fog from "../scene/environment/Fog";
-import PostProcessing from "../scene/environment/PostProcessing";
-import SkyHDRI from "../scene/environment/SkyHDRI";
-import { useFrame } from "@react-three/fiber";
-import { Pixelation } from "@react-three/postprocessing";
+import Fog from "./environment/Fog";
+import PostProcessing from "./environment/PostProcessing";
+import SkyHDRI from "./environment/SkyHDRI";
 
-export default function SceneManager() {
+import { SCENE_PRESETS } from "./scenePresets";
 
+export default function SceneManager({ preset = "default" }) {
+  const config = SCENE_PRESETS[preset];
 
   return (
     <>
-      <Camera />
-      <Lighting enabled={true} />
-      <Fog enabled={true} mode="exp" />
-      <SkyHDRI
-        options={{
-          hdri: {
-            enabled: true,
-            path: "/hdris/qwantani_dusk_2_puresky_2k.hdr",
-            background: true,
-          },
-          sky: {
-            enabled: false,
-          },
-        }}
-      />
-      <PostProcessing options={{ enabled: true }} />
+      <Camera {...config.camera} />
       <CameraController />
+
+      <Lighting {...config.lighting} />
+
+      {config.fog?.enabled && <Fog {...config.fog} />}
+
+      {config.environment?.sky && (
+        <SkyHDRI options={config.environment.sky} />
+      )}
+
+      {config.postProcessing?.enabled && (
+        <PostProcessing options={config.postProcessing} />
+      )}
     </>
   );
 }
