@@ -18,6 +18,7 @@ export const SCENE_PRESETS = {
     fog: { enabled: false },
     environment: { sky: { options: { sky: { enabled: true } } } },
     postProcessing: { enabled: false },
+    noise: { enabled: false },
     lerpFactor: 0.05 
   },
 };
