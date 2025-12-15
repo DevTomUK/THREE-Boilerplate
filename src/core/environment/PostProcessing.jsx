@@ -4,14 +4,26 @@
 // Fully prop-driven with deep merge using lodash.merge
 
 import { useRef } from "react";
-import { EffectComposer, Bloom, Noise, Vignette, Autofocus, Pixelation } from "@react-three/postprocessing";
+import {
+  EffectComposer,
+  Bloom,
+  Noise,
+  Vignette,
+  Autofocus,
+  Pixelation,
+} from "@react-three/postprocessing";
 import merge from "lodash.merge";
 import { useFrame } from "@react-three/fiber";
 
 export default function PostProcessing({ options = {} }) {
   const defaultOptions = {
     enabled: true,
-    bloom: { enabled: true, luminanceThreshold: 0.8, luminanceSmoothing: 1, height: 300 },
+    bloom: {
+      enabled: true,
+      luminanceThreshold: 0.8,
+      luminanceSmoothing: 1,
+      height: 300,
+    },
     noise: { enabled: true, opacity: 0.1 },
     vignette: { enabled: true, offset: 0.01, darkness: 1 },
     autofocus: { enabled: true, smoothTime: 0.1, bokehScale: 1 },
@@ -43,12 +55,20 @@ export default function PostProcessing({ options = {} }) {
       )}
       {config.noise.enabled && <Noise opacity={config.noise.opacity} />}
       {config.vignette.enabled && (
-        <Vignette offset={config.vignette.offset} darkness={config.vignette.darkness} />
+        <Vignette
+          offset={config.vignette.offset}
+          darkness={config.vignette.darkness}
+        />
       )}
       {config.autofocus.enabled && (
-        <Autofocus smoothTime={config.autofocus.smoothTime} bokehScale={config.autofocus.bokehScale} />
+        <Autofocus
+          smoothTime={config.autofocus.smoothTime}
+          bokehScale={config.autofocus.bokehScale}
+        />
       )}
-      {config.pixelation.enabled && <Pixelation ref={pixelRef} granularity={granuleRef.current} />}
+      {config.pixelation.enabled && (
+        <Pixelation ref={pixelRef} granularity={granuleRef.current} />
+      )}
     </EffectComposer>
   );
 }
