@@ -1,25 +1,29 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import dts from 'vite-plugin-dts'
+
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    dts({ insertTypesEntry: true })
+  ],
   build: {
     lib: {
       entry: './src/index.js',
       name: 'T3Scene',
-      fileName: (format) => `t3-scene.${format}.js`
+      formats: ['es', 'cjs'],
+      fileName: (format) =>
+        format === 'es' ? 'index.es.js' : 'index.js'
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'three', '@react-three/fiber', '@react-three/drei'],
-      output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          three: 'THREE',
-          '@react-three/fiber': 'ReactThreeFiber',
-          '@react-three/drei': 'Drei'
-        }
-      }
+      external: [
+        'react',
+        'react-dom',
+        'three',
+        '@react-three/fiber',
+        '@react-three/drei'
+      ]
     }
   }
-});
+})

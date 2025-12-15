@@ -58,8 +58,6 @@ Features smooth camera animations, lighting, fog, and a working example to get y
 - For reusable scene objects like floor, cubes, props, meshes:
 - `Cube.jsx` - has a hover and an onClick to demo camera movements by calling setTargetPosition.
 - `Floor.jsx` - just a floor. Rotated to -Math.PI / 2 to flatten it.
-- `TOM.jsx` - Imported glb - transformed to jsx with ```npx gltfjsx TOM.glb --transform```. On click changes view.
-- `Ocean.jsx` - Realistic water.
 
 #### UI
 - 2D UI components overlaying the scene (HUD, buttons, panels)

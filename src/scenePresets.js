@@ -7,7 +7,7 @@ export const SCENE_PRESETS = {
     lighting: { enabled: true, options: { ambient: { intensity: 0.7 }, directional: { intensity: 1 } } },
     fog: { enabled: true, options: { mode: "exp", density: 0.001 } },
     environment: {
-      sky: { options: { hdri: { enabled: true, path: "/hdris/qwantani_dusk_2_puresky_2k.hdr", background: true } } }
+      sky: { options: { hdri: { enabled: false, background: true } } }
     },
     postProcessing: { enabled: true, options: { bloom: { enabled: true } } },
     lerpFactor: 0.05
