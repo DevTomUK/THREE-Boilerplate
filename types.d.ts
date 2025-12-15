@@ -1,5 +1,3 @@
-// src/types.ts
-
 import React from "react";
 import { Object3D } from "three";
 
